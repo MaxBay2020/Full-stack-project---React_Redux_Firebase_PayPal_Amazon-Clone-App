@@ -1,0 +1,28 @@
+.cart-items>h2{
+    color: #292929;
+    font-size: 2.4rem;
+    padding: 1.6rem 1.2rem;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    margin-bottom: 1.2rem;
+}
+.cart-banner>img{
+    width: 100%;
+}
+.cart-container{
+    /*background: grey;*/
+    padding: 2.4rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cart-items{
+    flex: 3;
+}
+
+.cart-checkout{
+    flex: 1;
+}
+
+

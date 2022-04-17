@@ -1,0 +1,67 @@
+.item{
+    height: 18rem;
+    background: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.2rem 2.4rem;
+    margin-bottom: 6.4rem;
+}
+
+.item-img{
+    flex: 1;
+
+}
+.item-img>img{
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.item-details{
+    flex: 2;
+}
+
+.item-title{
+    font-size: 2rem;
+}
+
+.item-price{
+    margin-top: 0.8rem;
+    font-size: 1.5rem;
+}
+.item-price>strong{
+    font-size: 1.8rem;
+}
+
+.item-details>svg{
+    margin-top: 0.8rem;
+    width: 1.8rem;
+    fill: #deb378;
+}
+
+.item-btn{
+    margin-top: 0.8rem;
+}
+.item-btn>button{
+    background: #fad74c;
+    border: 1px solid rgba(0,0,0,.4);
+    padding: 4px 10px;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-out;
+}
+.item-btn>button:hover{
+    cursor: pointer;
+    background: #f1ca44;
+}
+
+
+.item-amount{
+    margin-top: 0.8rem;
+    font-size: 1.4rem;
+}
+.item-amount>span{
+    font-size: 1.6rem;
+    padding-left: 1.2rem;
+}

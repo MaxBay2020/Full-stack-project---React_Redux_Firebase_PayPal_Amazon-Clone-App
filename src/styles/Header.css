@@ -1,0 +1,118 @@
+.header{
+    height: 6rem;
+    background: #141920;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index:99999;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-logo{
+    width: 8.4rem;
+    padding-top: 1.2rem;
+}
+.header-searchBar{
+    min-width: 36rem;
+    max-width: 72rem;
+    position: relative;
+    flex: 1;
+    height: 3.6rem;
+    display: grid;
+    grid-template-columns: 1fr 3.6rem;
+    column-gap: 0;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.header-searchBar-icon{
+    width: 4.2rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #f5bf76;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    transition: all 0.2s ease-out;
+}
+.header-searchBar-icon:hover{
+    background: #e9a959;
+    cursor: pointer;
+}
+.header-searchBar-icon>svg{
+    width: 2.6rem;
+}
+.header-searchInput{
+    height: 100%;
+    outline: none;
+    border: 0;
+
+    padding-left: 1rem;
+    font-size: 1.6rem;
+}
+.header-menu{
+    color: #fff;
+    min-width: 30rem;
+    width: 36rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.header-option{
+
+}
+.header-option:hover{
+    cursor: pointer;
+}
+
+.header-optionLine1{
+    font-size: 1.2rem;
+    color: white;
+}
+.header-optionLine2{
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: white;
+}
+.header-cart-container{
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    justify-content: space-between;
+}
+
+.header-cartAndtext{
+    position: relative;
+
+}
+.header-cartAndtext>svg{
+    width: 3.8rem;
+    stroke: white;
+}
+.header-cartAndtext>div{
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    font-size: 1.8rem;
+    color: #e38c38;
+}
+
+.header-cart-container-text{
+    color: white;
+    font-size: 1.6rem;
+    padding-bottom: 4px;
+    text-transform: capitalize
+}
+
+.header-cart-container-number{
+
+}
+

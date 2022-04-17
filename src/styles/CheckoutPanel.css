@@ -1,0 +1,45 @@
+.checkoutPanel{
+    background: #f1f1f1;
+    height: 18rem;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.total{
+    font-size: 1.6rem;
+}
+
+.total>strong{
+    font-size: 1.6rem;
+}
+
+.gift{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.gift>span{
+    font-size: 1.2rem;
+}
+
+.proceed-btn{
+    width: 100%;
+}
+
+.proceed-btn>button{
+    width: 100%;
+    background: #fad74c;
+    border: 1px solid rgba(0,0,0,.4);
+    padding: 4px 10px;
+    font-size: 1.6rem;
+    transition: all 0.2s ease-out;
+}
+
+.proceed-btn>button:hover{
+    cursor: pointer;
+    background: #f1ca44;
+}
