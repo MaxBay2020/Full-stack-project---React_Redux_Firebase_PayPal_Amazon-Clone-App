@@ -3,10 +3,19 @@ import '../styles/Cart.css'
 import CartItem from "./CartItem";
 import CheckoutPanel from "./CheckoutPanel"
 import { useSelector } from 'react-redux'
+import {Link} from "react-router-dom";
 
 const Cart = () => {
 
     const cartItems = useSelector((state) => state.user?.cart)
+
+    if(cartItems.length===0)
+        return (
+            <div className='cart-empty-container'>
+                <h2>Your cart is empty</h2>
+                <Link to='/' className='cart-empty-container-link' >Go shopping 🛒</Link>
+            </div>
+        )
 
     return (
         <div className="cart">
@@ -34,7 +43,7 @@ const Cart = () => {
 
                 </div>
                 <div className="cart-checkout">
-                    <CheckoutPanel total={123456} />
+                    <CheckoutPanel />
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ const Product = (props) => {
 
     return (
         <div className='product'>
-            <p className='product-title'>{title}</p>
+            <p className='product-title'>{title.substring(0,30)+'...'}</p>
             <p className='product-price'>$<strong>{price}</strong></p>
             <p className='product-rating'>
                 {

@@ -4,6 +4,12 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     min-width: 36rem;
     max-height: 40rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.product:hover .product-image>img{
+    transform: scale(1.1)
 }
 
 .product-title{
@@ -32,11 +38,13 @@
 .product-image{
     /*margin: 2rem auto;*/
     width: 100%;
+
 }
 .product-image>img{
     display: block;
     margin: 2rem auto;
     height: 24rem;
+    transition: all 0.2s ease-out;
 }
 
 .product-add-btn{

@@ -48,8 +48,8 @@ const Header = () => {
             <div className='header-menu'>
                 <div className='header-option'>
                     <Link to={!cookies.user && '/login'} style={{ textDecoration: 'none' }}>
-                        <p className="header-optionLine1">Hello {cookies.user !== 'undefined' ? cookies.user : 'Guest'}</p>
-                        <p onClick={()=>handleLogout()} className="header-optionLine2">Sign {`${cookies.user !== 'undefined' ? 'Out' : 'In'}`}</p>
+                        <p className="header-optionLine1">Hello {!cookies.user || cookies.user === 'undefined' ? 'Guest' : cookies.user }</p>
+                        <p onClick={()=>handleLogout()} className="header-optionLine2">Sign {`${!cookies.user || cookies.user === 'undefined' ? 'In' : 'Out'}`}</p>
                     </Link>
                 </div>
 

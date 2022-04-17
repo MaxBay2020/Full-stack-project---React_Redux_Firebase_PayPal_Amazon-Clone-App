@@ -13,6 +13,7 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {initializeApp} from "firebase/app";
 import firebaseConfig from "./firebase/firebase-config";
 import {getFirestore} from "firebase/firestore";
+import Payment from "./components/Payment";
 
 function App() {
 
@@ -42,7 +43,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             {/* Register page*/}
             <Route path='/register' element={<Register />} />
-
+            {/*Payment page*/}
+            <Route path='/payment' element={<Payment />} />
         </Routes>
     </div>
   );

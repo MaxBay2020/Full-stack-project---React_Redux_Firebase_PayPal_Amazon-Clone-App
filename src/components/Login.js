@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import '../styles/Login.css'
 import {
     getAuth,
@@ -92,6 +92,11 @@ const Login = () => {
 
     }
 
+
+    useEffect(() => {
+        if(cookies.user && cookies.user !== 'undefined')
+            navigate('/')
+    }, []);
 
 
 

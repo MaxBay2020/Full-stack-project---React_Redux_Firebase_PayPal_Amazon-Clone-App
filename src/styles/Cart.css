@@ -25,4 +25,25 @@
     flex: 1;
 }
 
+.cart-empty-container{
 
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cart-empty-container>h2{
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+.cart-empty-container-link{
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #c3a128;
+    transition: all 0.2s ease-out;
+}
+.cart-empty-container-link:hover{
+    color: #dbbd47;
+}
