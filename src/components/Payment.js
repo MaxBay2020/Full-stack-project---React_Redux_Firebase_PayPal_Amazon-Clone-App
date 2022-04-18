@@ -5,7 +5,7 @@ import {useCookies} from "react-cookie"
 import {useNavigate} from 'react-router-dom'
 import CartItem from "./CartItem";
 import Address from "./Address";
-import CardNumber from "./CardNumber";
+import Stripe from "./Stripe";
 
 const Payment = () => {
     const [count, setCount] = useState(0);
@@ -15,9 +15,6 @@ const Payment = () => {
 
 
     useEffect(() => {
-        if(cartItems.length===0){
-            console.log('empty')
-        }
         if(cookies.user === 'undefined' || !cookies.user || cartItems.length===0)
             return navigate('/login')
         const newCount = cartItems.map(item => item.amount)?.reduce((pre, next) => pre + next)
@@ -27,9 +24,7 @@ const Payment = () => {
 
 
 
-
     return (
-        <div className="bg">
 
 
         <div className='container'>
@@ -59,37 +54,10 @@ const Payment = () => {
 
                 <h3>Payment Method</h3>
                 <div className="card-details">
-                    <CardNumber />
+                    <Stripe />
                 </div>
 
             </section>
-            {/*<section className='payment-title'>Checkout (1 items)</section>*/}
-
-            {/* <div className='payment'>*/}
-            {/*    <section className="payment-delivery">*/}
-            {/*        <h3>Delivery Address</h3>*/}
-            {/*        <section className="payment-address">*/}
-            {/*            27 Coledale Road Markham, Toronto, ON.*/}
-            {/*        </section>*/}
-            {/*    </section>*/}
-
-            {/*    <section className="payment-details">*/}
-            {/*        <h3>Delivery Items</h3>*/}
-            {/*        <div className="items">*/}
-            {/*            <div>Item 1</div>*/}
-            {/*            <div>Item 2</div>*/}
-            {/*            <div>Item 3</div>*/}
-            {/*        </div>*/}
-            {/*    </section>*/}
-
-            {/*    <section className="payment-method">*/}
-            {/*        <h3>Payment Method</h3>*/}
-            {/*        <div className="card-details">*/}
-
-            {/*        </div>*/}
-            {/*    </section>*/}
-            {/*</div>*/}
-        </div>
         </div>
     );
 };

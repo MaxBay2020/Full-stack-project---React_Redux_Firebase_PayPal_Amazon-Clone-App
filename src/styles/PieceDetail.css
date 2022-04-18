@@ -1,0 +1,21 @@
+.piece-detail{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 10px;
+}
+.piece-detail>p{
+    font-size: 1.2rem;
+}
+.piece-detail-title{
+
+}
+
+.piece-detail-price{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.piece-detail-quantity{
+
+}

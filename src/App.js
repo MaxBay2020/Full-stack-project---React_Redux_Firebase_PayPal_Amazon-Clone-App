@@ -8,12 +8,17 @@ import {
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {initializeApp} from "firebase/app";
 import firebaseConfig from "./firebase/firebase-config";
 import {getFirestore} from "firebase/firestore";
 import Payment from "./components/Payment";
+import {loadStripe} from "@stripe/stripe-js";
+import {Elements} from "@stripe/react-stripe-js";
+import {CookiesProvider} from "react-cookie";
+
+
 
 function App() {
 
@@ -30,23 +35,24 @@ function App() {
     }, []);
 
   return (
-    <div className="app">
-        {/* Header */}
-        <Header />
-        {/* Pages */}
-        <Routes>
-            {/* Home page */}
-            <Route path='/' element={<Home />} />
-            {/* Cart page*/}
-            <Route path='/cart' element={<Cart />} />
-            {/* Login page*/}
-            <Route path='/login' element={<Login />} />
-            {/* Register page*/}
-            <Route path='/register' element={<Register />} />
-            {/*Payment page*/}
-            <Route path='/payment' element={<Payment />} />
-        </Routes>
-    </div>
+            <div className="app">
+                {/* Header */}
+                <Header />
+                {/* Pages */}
+                <Routes>
+                    {/* Home page */}
+                    <Route path='/' element={<Home />} />
+                    {/* Cart page*/}
+                    <Route path='/cart' element={<Cart />} />
+                    {/* Login page*/}
+                    <Route path='/login' element={<Login />} />
+                    {/* Register page*/}
+                    <Route path='/register' element={<Register />} />
+                    {/*Payment page*/}
+                    <Route path='/payment' element={<Payment />} />
+                </Routes>
+            </div>
+
   );
 }
 

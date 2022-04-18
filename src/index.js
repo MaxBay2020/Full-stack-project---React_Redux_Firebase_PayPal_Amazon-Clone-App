@@ -18,12 +18,16 @@ const store = configureStore({
     middleware: []
 })
 
+const initialOptions = {
+    "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID
+}
+
 root.render(
   <React.StrictMode>
       <Provider store={store}>
           <Router>
               <CookiesProvider>
-                <App />
+                    <App />
               </CookiesProvider>
           </Router>
       </Provider>
