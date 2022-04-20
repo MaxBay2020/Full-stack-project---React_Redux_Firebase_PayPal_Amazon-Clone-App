@@ -6,6 +6,16 @@ import {
     signInWithEmailAndPassword
 } from 'firebase/auth'
 
+import {
+    collection,
+    addDoc,
+    onSnapshot,
+    serverTimestamp,
+    doc, getDoc,
+    query,
+    where
+} from 'firebase/firestore'
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -17,6 +27,9 @@ import {
 import {useNavigate} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
 
+import db from '../firebase/firebase-connection'
+import {useSelector} from 'react-redux'
+
 const Login = () => {
     // connect to firestore
     const auth = getAuth()
@@ -26,9 +39,11 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const cart = useSelector(state => state.user.cart)
+
 
     // cookies
-   const [cookies, setCookie] = useCookies()
+   const [cookies, setCookie, removeCookie] = useCookies()
 
 
     // get user info
@@ -47,11 +62,22 @@ const Login = () => {
         try{
             const credential = await signInWithEmailAndPassword(auth, user.email, user.password)
             const { user:{email} } = credential
-            dispatch(login({email}))
+
+            // get logged user in firestore
+            const userCollection = collection(db, 'users')
+            const q = query(userCollection, where('email', '==', email))
+            onSnapshot(q, snapshot => {
+                const id = snapshot.docs.map(doc => doc.id)[0]
+                dispatch(login({email, id}))
+            })
+
+
+
             // save user to cookie
             setCookie('user', credential.user.email, {
                 maxAge: 60 * 60 * 24 // 储存1天
             })
+
             navigate('/')
         }catch(err){
             toast.error(err.message, {
@@ -72,11 +98,25 @@ const Login = () => {
         try {
             const credential = await createUserWithEmailAndPassword(auth, user.email, user.password)
             const { user:{email} } = credential
-            dispatch(login({email}))
+
             // save user to cookie
+            removeCookie('user')
             setCookie('user', credential.user.email, {
                 maxAge: 60 * 60 * 24 // 储存1天
             })
+
+            // save user to firebase
+            const userCollection = collection(db, 'users')
+            const newUser = {
+                email,
+                cart,
+                orders: [],
+                createdAt: serverTimestamp()
+            }
+            const {id} = await addDoc(userCollection, newUser)
+            dispatch(login({email, id}))
+
+
             navigate('/')
         }catch(err){
             toast.error(err.message, {

@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/Address.css'
+import {useDispatch} from "react-redux";
+import {changeAddress} from "../features/user";
 
 const Address = () => {
+
+    const dispatch = useDispatch()
 
     const [address, setAddress] = useState({
         road: '27 Coledale Road Markham',
@@ -9,12 +13,17 @@ const Address = () => {
         province: 'ON'
     })
 
+    useEffect(() => {
+        dispatch(changeAddress(address))
+    }, []);
+
+
     const [showForm, setShowForm] = useState(false);
 
     const confirmAddress = (e) => {
         e.preventDefault()
         setShowForm(false)
-        console.log(address)
+        dispatch(changeAddress(address))
     }
 
     const handleAddress = (e) => {

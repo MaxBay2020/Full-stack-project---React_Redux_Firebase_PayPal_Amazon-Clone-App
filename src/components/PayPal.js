@@ -1,17 +1,32 @@
 import React, {useEffect, useState} from 'react'
-import '../styles/Stripe.css'
+import '../styles/PayPal.css'
 import NumberFormat from 'react-number-format'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import PieceDetail from "./PieceDetail"
-import {PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer} from "@paypal/react-paypal-js";
+import {PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import {addDoc, collection} from "firebase/firestore"
+import db from '../firebase/firebase-connection'
+import {addToOrder, clearCartAndDeliveryAddress} from "../features/user"
+import {
+    doc,
+    updateDoc,
+    arrayUnion
+} from 'firebase/firestore'
+import {useNavigate} from "react-router-dom";
 
-const Stripe = () => {
+const PayPal = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const cart = useSelector( state => state.user.cart)
+    const user = useSelector(state => state.user.user)
+    const delivery_address = useSelector(state => state.user.delivery_address)
     const [items, setItems] = useState([])
     const [showPaypalBtn, setShowPaypalBtn] = useState(false);
 
-    // const [{ isPending }] = usePayPalScriptReducer()
+    const [orderID, setOrderID] = useState('')
+
+    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -25,22 +40,49 @@ const Stripe = () => {
     }, [cart]);
 
 
-    const handleCharge = async () => {
-        console.log(totalPrice > 0)
-
-    }
-
     const createOrder = async (data, actions) => {
-        return await actions.order.create({
+        const orderId = await actions.order.create({
             purchase_units: [
                 {
                     amount: {
                         currency_code: 'USD',
-                        value: totalPrice
+                        // value: totalPrice
+                        value: '0.1'
                     }
                 }
             ]
         })
+
+        setOrderID(orderId)
+        return orderId
+    }
+
+    // add order to firebase
+    const createOrderInDB = async () => {
+        const orderCollection = collection(db, 'orders')
+        const newOrder = {
+            delivery_address,
+            ...cart
+        }
+        // get order id
+        const {id} = await addDoc(orderCollection, newOrder)
+
+        // add this order to the logged user
+        const userRef = await doc(db, 'users', user.id)
+        await updateDoc(userRef, {
+            orders: arrayUnion(id)
+        })
+
+        // update order
+        dispatch(addToOrder({
+            // delivery_address,
+            items: cart,
+        }))
+
+        // clear cart in redux store
+        dispatch(clearCartAndDeliveryAddress())
+
+        navigate(`/order/${id}`)
     }
 
     return (
@@ -89,8 +131,7 @@ const Stripe = () => {
                             createOrder={createOrder}
                             onApprove={(data, actions) => {
                                 return actions.order.capture().then((details) => {
-                                    const name = details.payer.name.given_name;
-                                    alert(`Transaction completed by ${name}`);
+                                    createOrderInDB()
                                 });
                             }}
                         />
@@ -103,4 +144,4 @@ const Stripe = () => {
     );
 };
 
-export default Stripe;
+export default PayPal;

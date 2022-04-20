@@ -1,0 +1,145 @@
+.allOrders{
+    /*background: #ebeded;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+.orders-container{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ebeded;
+    box-shadow: 0 1px 20px rgba(0,0,0,.1);
+    transition: all 0.2s ease-out;
+    padding: 0.2rem 2.4rem;
+    margin: 20px 0;
+}
+
+.orders{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.orders-container:hover{
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+.orders-container:active{
+    transform: scale(1);
+    box-shadow: 0 1px 20px rgba(0,0,0,.1);
+}
+
+.orders-id{
+    font-size: 1.6rem;
+    color: #434242;
+    margin-top: 20px;
+}
+.orders-title{
+    font-size: 1.6rem;
+    color: #434242;
+    margin-top: 20px;
+}
+.orders-number{
+    font-size: 1.6rem;
+    color: #434242;
+    margin-top: 20px;
+}
+.orders-img{
+    margin-top: 10px;
+}
+.orders-img>img{
+    height: 60px;
+}
+
+.orders-check-btn{
+    outline:none;
+    border: 1px solid #c6a520;
+    margin-top: 20px;
+    width: 6.4em;
+    height: 2.8rem;
+    color: #0f1111;
+    background: #fad74c;
+    font-size: 1.4rem;
+    padding: 0.6rem 0.3rem;
+    /*border-radius: 20px;*/
+    transition: all 0.2s ease-out;
+    pointer-events: auto;
+}
+
+.orders-check-btn:hover{
+    cursor: pointer;
+    background: #f1ca44;
+}
+
+.delivery-address-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 10px;
+}
+.orders-address-road{
+    font-size: 1.4rem;
+    color: #434242;
+
+}
+.orders-address-city{
+    font-size: 1.4rem;
+    color: #434242;
+
+}
+.orders-address-province{
+    font-size: 1.4rem;
+    color: #434242;
+
+}
+
+.allOrders-header{
+    padding-top: 8px;
+    width: 100%;
+    display: flex;
+    /*gap: 20px;*/
+    align-items:flex-start;
+    justify-content: space-between;
+}
+
+/*.allOrders-header>div{*/
+/*    font-size: 1.2rem;*/
+/*    color: #6d6c6c;*/
+/*}*/
+
+.header-orderId{
+    padding-top: 20px;
+}
+.header-items{
+    padding-top: 20px;
+}
+.header-number{
+    padding-top: 20px;
+}
+.header-img{
+    padding-top: 20px;
+}
+.header-address{
+    padding-top: 20px;
+}
+.header-check{
+    padding-top: 20px;
+}
+
+.orderId-container, .orderTitle-container, .orders-count, .orders-img-container, .orders-address, .orders-check{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orders-address{
+    align-items: flex-end;
+}

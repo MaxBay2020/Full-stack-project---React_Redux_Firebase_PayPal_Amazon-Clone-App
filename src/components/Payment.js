@@ -5,7 +5,7 @@ import {useCookies} from "react-cookie"
 import {useNavigate} from 'react-router-dom'
 import CartItem from "./CartItem";
 import Address from "./Address";
-import Stripe from "./Stripe";
+import PayPal from "./PayPal";
 
 const Payment = () => {
     const [count, setCount] = useState(0);
@@ -54,7 +54,7 @@ const Payment = () => {
 
                 <h3>Payment Method</h3>
                 <div className="card-details">
-                    <Stripe />
+                    <PayPal />
                 </div>
 
             </section>

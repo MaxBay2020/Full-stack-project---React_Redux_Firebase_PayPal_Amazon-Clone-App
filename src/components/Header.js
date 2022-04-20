@@ -53,10 +53,13 @@ const Header = () => {
                     </Link>
                 </div>
 
-                <div className='header-option'>
-                    <p className="header-optionLine1">Returns</p>
-                    <p className="header-optionLine2">& Orders</p>
-                </div>
+                <Link to='/order' style={{ textDecoration: 'none' }}>
+                    <div className='header-option'>
+                        <p className="header-optionLine1">Returns</p>
+                        <p className="header-optionLine2">& Orders</p>
+                    </div>
+                </Link>
+
                 <div className='header-option'>
                     <p className="header-optionLine1">Your</p>
                     <p className="header-optionLine2">Prime</p>
