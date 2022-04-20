@@ -46,8 +46,8 @@ const PayPal = () => {
                 {
                     amount: {
                         currency_code: 'USD',
-                        // value: totalPrice
-                        value: '0.1'
+                        value: totalPrice
+                        // value: '0.1'
                     }
                 }
             ]
